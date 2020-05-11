@@ -270,3 +270,13 @@ multimapped reads by the number of transcripts they aligned to and collapsing
 counts to genes by adding all counts for each transcript of a gene. The R
 package edgeR 3.18.1 (R version 3.2.1) was used for differential expression
 analysis.
+
+
+# Metabolomics
+
+Our analysis strategy for the metabolomic data generally follows the methods implemented in MetaboAnalyst [1], but has the advantage of versatility for customized experimental design. Metabolites with constant values across samples and with more than 80% values missing will be removed before further analysis. Remaining missing values will be imputed by k-means imputation using the impute package in R [2]. A median normalization will be performed for each sample and the resulting data log-transformed. The data will then be examined via Principal Component Analysis (PCA) and hierarchically clustering to identify outliers and potential confounding factors. Finally, differentially abundant metabolites will be identified using Limma [3], which allows for complex customized comparisons.
+ 
+1. Chong, J., Soufan, O., Li, C., Caraus, I., Li, S., Bourque, G., Wishart, D.S. and Xia, J. (2018) MetaboAnalyst 4.0: towards more transparent and integrative metabolomics analysis. Nucl. Acids Res. 46, W486-494. 
+2. Trevor Hastie, Robert Tibshirani, Balasubramanian Narasimhan and Gilbert Chu (2019). impute: impute: Imputation for microarray  data. R package version 1.60.0.
+3. Ritchie, M.E., Phipson, B., Wu, D., Hu, Y., Law, C.W., Shi, W., and Smyth, G.K. (2015). limma powers differential expression analyses for RNA-sequencing and microarray studies. Nucleic Acids Research 43(7), e47.
+
